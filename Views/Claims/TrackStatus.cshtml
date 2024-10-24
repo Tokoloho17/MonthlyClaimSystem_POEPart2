@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MonthlyClaimSystem_POEPart2.Models.Claim>
+@{
+    Layout = "_Layout";
+}
+
+<h1>Track Status of Claims</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lecturer Name</th>
+            <th>Status</th>
+            <th>Submitted At</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.LecturerName</td>
+                <td>@claim.Status</td>
+                <td>@claim.SubmittedAt.ToString("g")</td>
+            </tr>
+        }
+    </tbody>
+</table>

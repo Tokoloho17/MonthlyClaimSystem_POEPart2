@@ -1,0 +1,37 @@
+﻿@model IEnumerable<MonthlyClaimSystem_POEPart2.Models.Claim>
+@{
+    Layout = "_Layout";
+}
+
+<h1>Manage Claims</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lecturer Name</th>
+            <th>Hourly Rate</th>
+            <th>Hours Worked</th>
+            <th>Document Path</th>
+            <th>Status</th>
+            <th>Submitted At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.LecturerName</td>
+                <td>@claim.HourlyRate</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.DocumentPath</td>
+                <td>@claim.Status</td>
+                <td>@claim.SubmittedAt.ToString("g")</td>
+                <td>
+                    <a asp-action="ApproveClaim" asp-route-id="@claim.Id" class="btn btn-success">Approve</a>
+                    <a asp-action="RejectClaim" asp-route-id="@claim.Id" class="btn btn-danger">Reject</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
